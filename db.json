@@ -1,0 +1,18 @@
+[
+  {
+    "model": "mainapp.productcategory",
+    "pk": 2,
+    "fields": {
+      "name": "Кеды",
+      "description": "Отчевские"
+    }
+  },
+  {
+    "model": "mainapp.productcategory",
+    "pk": 3,
+    "fields": {
+      "name": "Джинсы",
+      "description": "Супер узкие"
+    }
+  }
+]
