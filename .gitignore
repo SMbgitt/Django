@@ -131,3 +131,4 @@ dmypy.json
 .idea/
 /stepshop/media/
 /media/
+/_db.sqlite3
