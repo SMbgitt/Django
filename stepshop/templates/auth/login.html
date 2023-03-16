@@ -10,14 +10,14 @@
     <h1>{{ title|capfirst }}</h1>
 
     <div class="row">
-        <div class="mx-auto col-3">
+        <div class="mx-auto col-4">
             <form action="{% url 'auth:login' %}" class="form-horizontal" method="post">
                 {% csrf_token %}
                 {{ login_form.as_p }}
                 <button class="btn btn-primary" type="submit">Войти</button>
             </form><br>
             <button class="btn btn-round btn-primary">
-                <a href="{#% url 'auth:register' %#}" class="text-light">
+                <a href="{% url 'auth:register' %}" class="text-light">
                     Зарегестрироваться
                 </a>
             </button>
