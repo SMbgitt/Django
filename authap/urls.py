@@ -1,7 +1,7 @@
 from django.urls import path
-
-
+from authap.views import login, logout
+app_name = 'authap'
 urlpatterns = [
-    #path('logi/', name='login'),
-    #path('logout/', name='logout'),
+    path('login/', login, name='login'),
+    path('logout/', logout, name='logout'),
 ]

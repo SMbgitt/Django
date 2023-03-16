@@ -132,3 +132,4 @@ dmypy.json
 /stepshop/media/
 /media/
 /_db.sqlite3
+/__db.sqlite3
