@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from django import forms
 from authap.models import ShopUser
 
@@ -30,6 +30,31 @@ class ShopUserRegisterForm(UserCreationForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
             field.help_text = ''
+
+    def clean_age(self):
+        data = self.cleaned_data['age']
+
+        if data < 10:
+            raise forms.ValidationError("Шкет, а ты не попутал?")
+
+        return data
+
+class ShopUserEditForm(UserChangeForm):
+
+
+    class Meta:
+        model = ShopUser
+        fields = ('username', 'first_name', 'password', 'email', 'age', 'avatar')
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # можно назначить стили каждому полю
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+            field.help_text = ''
+
 
     def clean_age(self):
         data = self.cleaned_data['age']
