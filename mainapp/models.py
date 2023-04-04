@@ -52,7 +52,7 @@ class Product(models.Model):
 
     price = models.DecimalField(
         verbose_name='цена',
-        max_digits=8,
+        max_digits=12,
         decimal_places=2,
         default=0,
     )

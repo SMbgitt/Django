@@ -1,16 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
-
+from stepshop.views import links_menu
 from basketapp.models import Basket
 from mainapp.models import Product
 
-
 def basket(request):
     if request.user.is_authenticated:
-        basket = Basket.object.filter(user=request.user)
+        basket = Basket.objects.filter(user=request.user)
+        title = "корзина"
 
         context = {
-            'basket': basket,
+            'title': title,
+            'links_menu': links_menu,
         }
 
         return render(request, 'basket/basket.html', context)
@@ -32,4 +33,7 @@ def basket_add(request, pk):
 
 
 def basket_remove(request, pk):
-    return render(request, 'basket/basket.html')
+    basket_record = get_object_or_404(Basket, pk=pk)
+    basket_record.delete()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
