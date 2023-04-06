@@ -27,3 +27,13 @@
     border-radius: 50%;
 
 }
+#filter a{
+    color: #000;
+}
+#filter a:hover{
+    color: #3a8bcd;
+}
+#filter a:active{
+    color: #3a8bcd;
+}
+
