@@ -62,12 +62,14 @@ def product(request, pk):
     category = product_item.category
 
     same_products = get_same_products(product_item)
+    basket = get_basket(request.user)
     context = {
         'title': title,
         'links_menu': links_menu,
         'product': product_item,
         'category': category,
         'same_products': same_products,
+        'basket': basket,
     }
 
 
