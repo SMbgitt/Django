@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from mainapp.models import Product
 from mainapp.views import get_basket
 
 links_menu = [
@@ -11,12 +12,14 @@ links_menu = [
 
 
 def index(request):
+    products = Product.objects.all().order_by('-price')
     title = "главная"
     basket = get_basket(request.user)
     context = {
         'title': title,
         'links_menu': links_menu,
         'basket': basket,
+        'products': products
     }
 
     return render(request, 'index.html', context)
