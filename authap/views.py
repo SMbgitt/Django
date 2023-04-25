@@ -15,10 +15,7 @@ def login(request):
     if request.method == 'POST' and login_form.is_valid():
         username = request.POST['username']
         password = request.POST['password']
-        print(username)
-        print(password)
         user = auth.authenticate(username=username, password=password)
-        print(user)
         if user and user.is_active:
             auth.login(request, user)
             if 'next' in request.POST.keys():
@@ -41,16 +38,12 @@ def logout(request):
 def register(request):
     title = 'регистриция'
     register_form = ShopUserRegisterForm()
-    print(1)
     if request.method == "POST":
         register_form = ShopUserRegisterForm(request.POST, request.FILES)
-        print(2)
         if register_form.is_valid():
-            print(3)
             register_form.save()
             return HttpResponseRedirect(reverse('auth:login'))
     else:
-        print(4)
         register_form = ShopUserRegisterForm()
     context = {
         'title': title,
